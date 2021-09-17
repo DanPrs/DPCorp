@@ -21,7 +21,7 @@ provider "azurerm" {
 # Hub VNet
 module "VNet-Hub" {
   source              = "./vnet"
-  environment         = "Prod"
+  environment         = "HUB"
   address_space       = ["10.0.0.0/22"]
   dns_servers         = ["1.1.1.1", 
                         "1.0.0.2"]
