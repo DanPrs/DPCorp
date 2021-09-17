@@ -10,9 +10,4 @@ This is a Terraform configuration that will create a standard Azure VNet archite
 
 You must have an Azure account and subscription. A Terraform cloud account and of course, GitHub account.
 
-The values for 
-    `subscription_id`
-    `client_id` 
-    `client_secret`
-    `tenant_id`
-should be saved as environment variables on your workspace, in Terraform Cloud.
+The values for `subscription_id`, `client_id`, `client_secret` and `tenant_id`should be saved as environment variables on your workspace, in Terraform Cloud.
