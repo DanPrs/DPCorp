@@ -55,17 +55,17 @@ module "VNet-Prod" {
 }
 
 # VNet Peering Test to Hub
-resource "azurerm_virtual_network_peering" "example-1" {
-  name                      = "peer1to2"
-  resource_group_name       = azurerm_resource_group.VNet-Hub.name
-  virtual_network_name      = azurerm_virtual_network.VNet-Test.name
-  remote_virtual_network_id = azurerm_virtual_network.VNet-Hub.id
+resource "azurerm_virtual_network_peering" "VNetPeer-TestToHub" {
+  name                      = "TestToHub"
+  resource_group_name       = module.VNet-Hub.name
+  virtual_network_name      = module.VNet-Test.name
+  remote_virtual_network_id = module.VNet-Hub.id
 }
 
 # VNet Peering Hub to Test
-resource "azurerm_virtual_network_peering" "example-2" {
-  name                      = "peer2to1"
-  resource_group_name       = azurerm_resource_group.VNet-Hub.name
-  virtual_network_name      = azurerm_virtual_network.VNet-Hub.name
-  remote_virtual_network_id = azurerm_virtual_network.VNet-Test.id
+resource "azurerm_virtual_network_peering" "VNetPeer-HubToTest" {
+  name                      = "HubToTest"
+  resource_group_name       = module.VNet-Hub.name
+  virtual_network_name      = module.VNet-Hub.name
+  remote_virtual_network_id = module.VNet-Test.id
 }
