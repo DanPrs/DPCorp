@@ -12,7 +12,7 @@ variable "address_space" {
 }
 
 variable "dns_servers" {
-  type = string
+  type = list(string)
 }
 
 variable "sub1_address_prefix" {
