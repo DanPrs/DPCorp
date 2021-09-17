@@ -57,9 +57,9 @@ module "VNet-Prod" {
 # VNet Peering Test to Hub
 resource "azurerm_virtual_network_peering" "VNetPeer-TestToHub" {
   name                      = "TestToHub"
-  resource_group_name       = module.VNet-Hub.name
-  virtual_network_name      = module.VNet-Test.name
-  remote_virtual_network_id = module.VNet-Hub.id
+  resource_group_name       = "RG-VNet-Hub"
+  virtual_network_name      = "VNet-Test"
+  remote_virtual_network_id = VNet-Hub.id
 }
 
 # VNet Peering Hub to Test
