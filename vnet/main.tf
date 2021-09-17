@@ -25,13 +25,6 @@ resource "azurerm_network_security_group" "NSG3" {
   resource_group_name = azurerm_resource_group.RG-VNet.name
 }
 
-# DDOS
-resource "azurerm_network_ddos_protection_plan" "DDOS_Protection" {
-  name                = "DDOS-Protection"
-  location            = azurerm_resource_group.RG-VNet.location
-  resource_group_name = azurerm_resource_group.RG-VNet.name
-}
-
 # VNet
 resource "azurerm_virtual_network" "VNet" {
   name                = "VNet-${var.environment}"
@@ -39,11 +32,6 @@ resource "azurerm_virtual_network" "VNet" {
   resource_group_name = azurerm_resource_group.RG-VNet.name
   address_space       = var.address_space
   dns_servers         = var.dns_servers
-
-  ddos_protection_plan {
-    id     = azurerm_network_ddos_protection_plan.DDOS_Protection.id
-    enable = true
-  }
 
   # FrontEnd subnet
   subnet {
