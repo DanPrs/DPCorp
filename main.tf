@@ -35,11 +35,6 @@ module "VNet-Test" {
   sub1_address_prefix = "10.10.1.0/24"
   sub2_address_prefix = "10.10.2.0/24"
   sub3_address_prefix = "10.10.3.0/24"
-
-  ddos_protection_plan {
-    id     = azurerm_network_ddos_protection_plan.DDOS_Protection.id
-    enable = true
-  }
 }
 
 # Prod VNet
