@@ -1,7 +1,3 @@
-terraform {
-  required_version = "1.07"
-}
-
 # VNet Resource Group
 resource "azurerm_resource_group" "RG-VNet" {
   name     = "RG-VNet-${var.environment}"
