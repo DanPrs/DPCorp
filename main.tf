@@ -21,7 +21,7 @@ provider "azurerm" {
 module "VNet-Test" {
   source              = "./vnet"
   environment         = "Test"
-  address_space       = "10.10.0.0/22"
+  address_space       = ["10.10.0.0/22"]
   dns_servers         = ["1.1.1.1", 
                         "1.0.0.2"]
   sub1_address_prefix = "10.10.1.0/24"

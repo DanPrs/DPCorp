@@ -8,7 +8,7 @@ variable "environment" {
 }
 
 variable "address_space" {
-  type = string
+  type = list(string)
 }
 
 variable "dns_servers" {
