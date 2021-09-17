@@ -1,5 +1,5 @@
 terraform {
-  required_version = ">= 1.05"
+  required_version = "1.07"
 }
 
 # VNet Resource Group
