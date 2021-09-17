@@ -18,13 +18,6 @@ provider "azurerm" {
   features {}
 }
 
-# DDOS
-resource "azurerm_network_ddos_protection_plan" "DDOS_Protection" {
-  name                = "DDOS-Protection"
-  location            = azurerm_resource_group.RG-VNet-Prod.location
-  resource_group_name = azurerm_resource_group.RG-VNet-Prod.name
-}
-
 # Test VNet
 module "VNet-Test" {
   source              = "./vnet"
@@ -47,9 +40,4 @@ module "VNet-Prod" {
   sub1_address_prefix = "10.20.1.0/24"
   sub2_address_prefix = "10.20.2.0/24"
   sub3_address_prefix = "10.20.3.0/24"
-
-  ddos_protection_plan {
-    id     = azurerm_network_ddos_protection_plan.DDOS_Protection.id
-    enable = true
-  }
 }
