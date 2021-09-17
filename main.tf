@@ -21,7 +21,7 @@ provider "azurerm" {
 # Hub VNet
 module "VNet-Hub" {
   source              = "./vnet"
-  environment         = "HUB"
+  environment         = "Hub"
   address_space       = ["10.0.0.0/22"]
   dns_servers         = ["1.1.1.1", 
                         "1.0.0.2"]
@@ -52,4 +52,20 @@ module "VNet-Prod" {
   sub1_address_prefix = "10.20.1.0/24"
   sub2_address_prefix = "10.20.2.0/24"
   sub3_address_prefix = "10.20.3.0/24"
+}
+
+# VNet Peering Test to Hub
+resource "azurerm_virtual_network_peering" "example-1" {
+  name                      = "peer1to2"
+  resource_group_name       = azurerm_resource_group.VNet-Hub.name
+  virtual_network_name      = azurerm_virtual_network.VNet-Test.name
+  remote_virtual_network_id = azurerm_virtual_network.VNet-Hub.id
+}
+
+# VNet Peering Hub to Test
+resource "azurerm_virtual_network_peering" "example-2" {
+  name                      = "peer2to1"
+  resource_group_name       = azurerm_resource_group.VNet-Hub.name
+  virtual_network_name      = azurerm_virtual_network.VNet-Hub.name
+  remote_virtual_network_id = azurerm_virtual_network.VNet-Test.id
 }
