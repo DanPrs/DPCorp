@@ -61,11 +61,18 @@ resource "azurerm_network_watcher" "NetworkWatcherEastUS" {
   resource_group_name = azurerm_resource_group.RG-VNet-Hub.name
 }
 
-# Need to fix this nonsense peering
 # VNet Peering Test to Hub
-#resource "azurerm_virtual_network_peering" "VNetPeer-TestToHub" {
-#  name                      = "TestToHub"
-#  resource_group_name       = "RG-VNet-Hub"
-#  virtual_network_name      = "VNet-Test"
-#  remote_virtual_network_id = VNet-Hub.id
-#}
+resource "azurerm_virtual_network_peering" "VNetPeer-TestToHub" {
+  name                      = "TestToHub"
+  resource_group_name       = "RG-VNet-Hub"
+  virtual_network_name      = "VNet-Test"
+  remote_virtual_network_id = VNet-Hub.id
+}
+
+# VNet Peering Hub to Test
+resource "azurerm_virtual_network_peering" "VNetPeer-HubToTest" {
+  name                      = "HubToTest"
+  resource_group_name       = "RG-VNet-Hub"
+  virtual_network_name      = "VNet-Hub"
+  remote_virtual_network_id = VNet-Test.id
+}
