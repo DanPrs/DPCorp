@@ -54,6 +54,13 @@ module "VNet-Prod" {
   sub3_address_prefix = "10.20.3.0/24"
 }
 
+# Network watcher
+resource "azurerm_network_watcher" "NetworkWatcherEastUS" {
+  name                = "NetWatcher-Hub"
+  location            = azurerm_resource_group.RG-VNet-Hub.location
+  resource_group_name = azurerm_resource_group.RG-VNet-Hub.name
+}
+
 # Need to fix this nonsense peering
 # VNet Peering Test to Hub
 #resource "azurerm_virtual_network_peering" "VNetPeer-TestToHub" {
