@@ -58,6 +58,7 @@ module "VNet-Prod" {
 resource "azurerm_network_watcher" "NetworkWatcherEastUS" {
   name                = "NetWatcher-Hub"
   resource_group_name = "RG-VNet-Hub"
+  location            = "East US"
 }
 
 # VNet Peering Test to Hub
