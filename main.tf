@@ -58,21 +58,21 @@ module "VNet-Prod" {
 resource "azurerm_network_watcher" "NetworkWatcherEastUS" {
   name                = "NetWatcher-Hub"
   location            = module.VNet-Hub.location
-  resource_group_name = module.VNet-Hub.name
+  resource_group_name = module.VNet-Hub.resource_group_name
 }
 
 # VNet Peering Test to Hub
 resource "azurerm_virtual_network_peering" "VNetPeer-TestToHub" {
   name                      = "Peer-TestToHub"
-  resource_group_name       = module.VNet-Hub.name
-  virtual_network_name      = module.VNet-Test.name
+  resource_group_name       = module.VNet-Hub.resource_group_name
+  virtual_network_name      = module.VNet-Test.virtual_network_name
   remote_virtual_network_id = module.VNet-Hub.name.id
 }
 
 # VNet Peering Test to Hub
 resource "azurerm_virtual_network_peering" "VNetPeer-HubToTest" {
   name                      = "Peer-HubToTest"
-  resource_group_name       = module.VNet-Hub.name
-  virtual_network_name      = module.VNet-Hub.name
+  resource_group_name       = module.VNet-Hub.resource_group_name
+  virtual_network_name      = module.VNet-Hub.virtual_network_name
   remote_virtual_network_id = module.VNet-Test.name.id
 }
