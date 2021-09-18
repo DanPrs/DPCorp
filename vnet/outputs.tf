@@ -1,8 +1,8 @@
-output "VNet-ID" {
+output "VNet-Test-ID" {
     value = "VNet-Test.id"
     }
 
-output "VNet-ID" {
+output "VNet-Hub-ID" {
     value = "VNet-Hub.id"
     }
 
