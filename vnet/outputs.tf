@@ -1,4 +1,8 @@
 output "VNet-ID" {
-    value = "VNet-${var.environment}.id"
+    value = "VNet-Test.id"
+    }
+
+output "VNet-ID" {
+    value = "VNet-Hub.id"
     }
 
